@@ -1,17 +1,26 @@
 <section id="current_movies">
     <div class="section_header">
         <h1>{{ title }}</h1>
-    </div>
-    <!-- div class="row carousel-row">
-        @for (movie of movies; track movie.id) {
-        <div class="movie-wrapper">
-            <app-movie [movie]="movie"></app-movie>
+        <div class="btn-group">
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="bi bi-funnel"></i>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" (click)="filterByLetters()">Ordre alphabéthique</a></li>
+                <li><a class="dropdown-item" (click)="filterByReleaseDate()">Date de sortie croissante</a></li>
+                <li><a class="dropdown-item" (click)="filterByRateAscending()" >Note croissante</a></li>
+                <li><a class="dropdown-item" (click)="filterByRateDescending()" >Note décroissante</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" (click)="resetFilter()">Reset filters</a></li>
+            </ul>
         </div>
-        }
-    </div -->
+    </div>
     <div class="row carousel-row">
         <ng-container *ngIf="movies">
-            <p-carousel [value]="movies" [numVisible]="5" [numScroll]="2" [circular]="true" styleClass="my-carousel">
+            <p-carousel [value]="filteredMovies.length > 0 ? filteredMovies : movies" [numVisible]="5" [numScroll]="2" [circular]="true" styleClass="my-carousel">
                 <ng-template pTemplate="item" let-movie>
                     <app-movie [movie]="movie"></app-movie>
                 </ng-template>
