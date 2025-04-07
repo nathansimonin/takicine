@@ -1,21 +1,21 @@
-import { Component,  } from '@angular/core';
+import {Component, OnInit,} from '@angular/core';
 import { Movie } from '../models/movie';
 import { MoviesService } from '../services/movies.service';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import {Observable, switchMap, tap} from 'rxjs';
 import { Review } from '../models/review';
 import { AsyncPipe } from '@angular/common';
 import { MoviesCommentComponent } from '../movies-comment/movies-comment.component';
+import {MoviesSuggestionComponent} from "../movies-suggestion/movies-suggestion.component";
 
 @Component({
   selector: 'app-movies-details',
   standalone: true,
-  imports: [AsyncPipe, MoviesCommentComponent],
+  imports: [AsyncPipe, MoviesCommentComponent, MoviesSuggestionComponent],
   templateUrl: './movies-details.component.html',
   styleUrl: './movies-details.component.scss'
 })
 export class MoviesDetailsComponent {
-
   constructor(
     private readonly moviesService: MoviesService,
     private activatedRoute: ActivatedRoute,
@@ -33,16 +33,23 @@ export class MoviesDetailsComponent {
   };
 
   reviews$!: Observable<Review[]>;
+  allMovies: Movie[] = [];
 
   ngOnInit(): void {
-    this.movieId = +(this.activatedRoute.snapshot.paramMap.get('id')!);
-    this.moviesService.getMovieById(this.movieId)
-      .subscribe(movie => {        
+    this.activatedRoute.paramMap.pipe(
+        tap(param =>  this.movieId = Number(param.get('id'))),
+        switchMap(() => this.moviesService.getMovieById(this.movieId))
+    ).subscribe(movie => {
         movie.releaseDate = new Date(movie.releaseDate);
         movie.releaseDate = movie.releaseDate.toISOString().split('T')[0]
         this.movie = movie;
+
+      this.reviews$ = this.moviesService.getReviews(this.movieId);
       });
-    this.reviews$ = this.moviesService.getReviews(this.movieId);
+    this.moviesService.getMovies().subscribe(movies => {
+      this.allMovies = movies;
+    });
+
   }
 
   extractYear(input: Date | string): number | null {
