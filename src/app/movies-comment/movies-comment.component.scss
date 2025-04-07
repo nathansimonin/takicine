@@ -1,9 +1,16 @@
+.gray {
+  background-color: #f2f2f3;
+}
+
+.blank {
+  background-color: #ffffff;
+}
+
 .global-card {
   margin: 2rem;
   padding: 1rem 2rem;
   border: none;
   gap: 0.6rem;
-  background-color: #f8f9fa;
   box-shadow: 2px 2px 10px rgb(0, 0, 0, 0.3);
   transition: transform 0.15s ease-in-out;
 
