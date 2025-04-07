@@ -1,5 +1,5 @@
 export interface Review {
-    id: number;
+    id?: number;
     user: {
         id: number;
         firstName?: string;

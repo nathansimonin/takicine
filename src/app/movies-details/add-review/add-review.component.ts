@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, RequiredValidator, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RatingComponent } from '../rating/rating.component';
 import { CommonModule } from '@angular/common';
+import { Review } from '../../models/review';
+import { ReviewsService } from '../../services/reviews.service';
 
 @Component({
   selector: 'app-add-review',
@@ -17,8 +19,10 @@ export class AddReviewComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+    private fb: FormBuilder,
+    private reviewService: ReviewsService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.movieId = +(this.activatedRoute.snapshot.paramMap.get('id')!);
@@ -34,6 +38,28 @@ export class AddReviewComponent implements OnInit {
   }
 
   onRatingChange(rate: number) {
-    this.form.value.rate = rate;
+    this.form.patchValue({ rate: rate });
+  }
+
+  submit() {
+    if (this.form.valid) {
+      const formValue = this.form.value;
+      const review: Review = {
+        user: {
+          id: 1
+        },
+        movie: {
+          id: this.movieId,
+        },
+        rate: formValue.rate,
+        text: formValue.text,
+        reviewDate: new Date()
+      }
+
+      this.reviewService.addReview(review).subscribe();
+      this.router.navigateByUrl(`/movies/${this.movieId}`).then(() => {
+        window.location.reload();
+      });
+    }
   }
 }
