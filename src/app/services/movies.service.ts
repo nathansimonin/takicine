@@ -30,4 +30,8 @@ export class MoviesService {
   updateMovie(movieId: number, movie: Movie) {
     return this.httpClient.put<Movie>(`${this.url}/${movieId}`, movie);
   }
+
+  getReviews(movieId: number): Observable<Movie[]> {
+    return this.httpClient.get<Movie[]>(`${this.url}/${movieId}/reviews`);
+  }
 }

@@ -16,5 +16,4 @@ export class HomeComponent {
   movies$: Observable<Movie[]> = this.moviesService.getMovies();
 
   constructor(private readonly moviesService: MoviesService) {}
-
 }
