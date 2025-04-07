@@ -1,0 +1,11 @@
+.form {
+    padding: 2rem 5vw; 
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.is-invalid {
+    border-color: red;
+  }
+  

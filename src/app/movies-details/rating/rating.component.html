@@ -1,0 +1,7 @@
+<div class="star-rating">
+    <ng-container *ngFor="let star of stars; let i = index">
+        <i class="bi" [ngClass]="{'bi-star-fill': i < rating, 'bi-star': i >= rating}" (click)="setRating(i + 1)">
+        </i>
+    </ng-container>
+    <span class="rating-value">{{ rating }}/5</span>
+</div>
