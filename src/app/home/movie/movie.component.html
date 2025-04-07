@@ -1,14 +1,12 @@
-<div>
-  <div class="card border-0">
-    <div class="card-body px-0">
-      @if(movie.image) {
-      <img [src]="'http://localhost:8080/movies/' + movie.id + '/image'" class="card-img-top card-img">
-      }
-      <h5 class="card-title">{{movie.title}}</h5>
-      <div class="card-info">
-        <div class="star"> </div>
-        <b>{{movie.rate}}/<small>5</small></b> | {{ movie.releaseDate | date: 'yyyy' }}
-      </div>
+<div class="card border-0" [routerLink]="'/movies/' + movie.id">
+  <div class="card-body px-0">
+    @if(movie.image) {
+    <img [src]="'http://localhost:8080/movies/' + movie.id + '/image'" class="card-img-top card-img">
+    }
+    <h5 class="card-title">{{movie.title}}</h5>
+    <div class="card-info">
+      <div class="star"> </div>
+      <b>{{movie.rate}}/<small>5</small></b> | {{ movie.releaseDate | date: 'yyyy' }}
     </div>
   </div>
 </div>

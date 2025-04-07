@@ -1,3 +1,12 @@
-<app-movies-section title="A l'affiche" [movies]="(movies$ | async) ?? []"></app-movies-section>
-<app-movies-section title="Les coups de coeurs" [movies]="(movies$ | async) ?? []"></app-movies-section>
-<app-movies-section title="Les plus trendy" [movies]="(movies$ | async) ?? []"></app-movies-section>
+@if (currentMovies.length > 0) {
+<app-movies-section title="A l'affiche" [movies]="currentMovies"></app-movies-section>
+}
+@if (bestMovies.length > 0) {
+<app-movies-section title="Les coups de coeurs" [movies]="bestMovies"></app-movies-section>
+}
+@if (trendyMovies.length > 0) {
+<app-movies-section title="Les plus trendy" [movies]="trendyMovies"></app-movies-section>
+}
+<app-movies-section title="Tous les films" [movies]="allMovies"></app-movies-section>
+
+<app-footer></app-footer>
