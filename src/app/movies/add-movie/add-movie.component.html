@@ -1,0 +1,29 @@
+<div class="container">
+    <a class="btn btn-secondary" routerLink="/movies" role="button">Retour liste</a>
+
+    <h1>Nouveau film</h1>
+    <form>
+        <div class="mb-3">
+            <label for="title" class="form-label">Titre</label>
+            <input type="text" class="form-control border border-1 border-dark border-opacity-50" id="title" name="title" [(ngModel)]="movie.title" />
+        </div>
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Réalisateur</label>
+            <input type="text" class="form-control border border-1 border-dark border-opacity-50" id="director" name="director" [(ngModel)]="movie.director" />
+        </div>
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Date de sortie</label>
+            <input type="date" class="form-control border border-1 border-dark border-opacity-50" id="date" name="date" [(ngModel)]="movie.releaseDate" />
+        </div>
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Synopsis</label>
+            <input type="text" class="form-control border border-1 border-dark border-opacity-50" id="Synopsis" name="Synopsis" [(ngModel)]="movie.synopsis" />
+        </div>
+
+        <div><button class="btn btn-warning" (click)=addMovie()>Ajouter</button></div>
+
+    </form>
+</div>
