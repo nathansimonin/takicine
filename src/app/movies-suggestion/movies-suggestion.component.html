@@ -1,0 +1,16 @@
+<div
+    class="card global-card"
+    [ngClass]="isGray ? 'gray' : 'blank'"
+    [routerLink]="'/movies/' + movie.id">
+    <div class="inter-card">
+        <img [src]="'http://localhost:8080/movies/' + movie.id + '/image'" class="card-img-top card-img">
+        <div class="fields-card">
+            <h3>{{movie.title}}</h3>
+            <div>{{movie.releaseDate | date: 'YYYY'}}</div>
+            <div class="rated-card">
+                <i class="bi-star-fill" style="color: gold"></i>
+                {{movie.rate}}/5
+            </div>
+        </div>
+    </div>
+</div>

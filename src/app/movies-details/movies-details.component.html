@@ -8,39 +8,46 @@
             alt="{{ movie.title }}"
             />
         }
-    </div>
-    <div class="col-md-8">
-        <div class="d-flex justify-content-between align-items-center flex-wrap mb-2">
-            <h1 class="fw-bold mb-0">{{ movie.title }}</h1>
-            
-            <div class="d-flex align-items-center mt-2 mt-md-0">
-                <i class="bi bi-star-fill me-2" style="color: #FECC01; font-size: 2rem;"></i>
-                <span class="fs-1 fw-bold">
-                {{movie.rate}}
-                <small>/5</small>
-            </span>
+        </div>
+        <div class="col-md-8">
+            <div class="d-flex justify-content-between align-items-center flex-wrap mb-2">
+                <h1 class="fw-bold mb-0">{{ movie.title }}</h1>
+
+                <div class="d-flex align-items-center mt-2 mt-md-0">
+                    <i class="bi bi-star-fill me-2" style="color: #FECC01; font-size: 2rem;"></i>
+                    <span class="fs-1 fw-bold">
+                        {{movie.rate}}
+                        <small>/5</small>
+                    </span>
+                </div>
             </div>
-        </div>          
-        <p class="fs-3">{{ extractYear(movie.releaseDate) }}</p>
-        <div class="bg-light p-4 rounded shadow-sm">
-            <h5 class="fw-bold fs-2">Synopsis</h5>
-            <br/>
-            <p class="fs-4">{{ movie.synopsis }}</p>
+            <p class="fs-3">{{ extractYear(movie.releaseDate) }}</p>
+            <div class="bg-light p-4 rounded shadow-sm">
+                <h5 class="fw-bold fs-2">Synopsis</h5>
+                <br/>
+                <p class="fs-4">{{ movie.synopsis }}</p>
+            </div>
         </div>
     </div>
     <div class="reviews-layout my-5">
         <div class="reviews" style="display: flex; flex-direction: column; margin-right: 20px;">
-            <div class="reviews" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem">
                 <h1 class="mb-0 fw-bold" style="border-left: 10px solid #FBC02D; padding-left: 15px;">Avis</h1>
                 <button class="btn btn-warning mt-2" [routerLink]="'review'">REDIGER MA CRITIQUE</button>
             </div>
-                @for (review of reviews$ | async; let i = $index; track review.id) {
-                    <app-movies-comment [review]="review" [isGray]="i % 2 === 0"></app-movies-comment>
+            @for (review of reviews$ | async; let i = $index; track review.id) {
+                <app-movies-comment [review]="review" [isGray]="i % 2 === 0"></app-movies-comment>
             }            
         </div>        
-        <div class="suggestions">
-            <h1 class="mb-0 fw-bold" style="border-left: 10px solid #FBC02D; padding-left: 15px;">Suggestions</h1>
-            <p>Youpi</p>
+        <div class="suggestions" style="display: flex; flex-direction: column; margin-right: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem">
+                <h1 class="mb-0 fw-bold" style="border-left: 10px solid #FBC02D; padding-left: 15px;">Suggestions</h1>
+            </div>
+            @for (sugMovie of allMovies; let i = $index; track sugMovie.id) {
+                @if(sugMovie.image && movie.id != sugMovie.id) {
+                    <app-movies-suggestion [movie]="sugMovie" [isGray]="i % 2 !== 0"></app-movies-suggestion>
+                }
+            }
         </div>
     </div>
 </div>
