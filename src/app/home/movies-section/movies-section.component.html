@@ -1,0 +1,12 @@
+<section id="current_movies">
+    <div class="section_header">
+        <h1>A l'affiche</h1>
+    </div>
+    <div class="row carousel-row">
+        @for (movie of movies; track movie.id) {
+        <div class="movie-wrapper">
+            <app-movie [movie]="movie"></app-movie>
+        </div>
+        }
+    </div>
+</section>

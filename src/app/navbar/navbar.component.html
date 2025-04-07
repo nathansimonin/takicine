@@ -1,5 +1,10 @@
-<nav class="navbar navbar-light navbar-expand bg-light ps-5" [title]="title">
-    <a class="navbar-brand">{{ title | titlecase }}</a>
-    <a class="nav-item nav-link" routerLink="/">Accueil</a>
-    <a class="nav-item nav-link ms-3" routerLink="/movies">Gestion de films</a>
+<nav class="navbar navbar-expand custom-nav" [title]="title">
+    <div>
+        <a class="navbar-brand" routerLink="/"><img class="taki-logo" src="https://www.takicine.fr/assets/takicine.png" /></a>
+
+    </div>
+    <div class="link-wrapper">
+        <a class="nav-item nav-link ms-3" routerLink="/movies">Gestion de films</a>
+        <button type="button" class="btn btn-dark px-4 py-2"><i class="bi bi-person-circle"></i> Admin</button>
+    </div>
 </nav>

@@ -1,11 +1,14 @@
-<div class="card shadow m-4" style="width: 18rem; min-height: 55rem">
-    @if(movie.image) {
-      <img [src]="'http://localhost:8080/movies/' + movie.id + '/image'" class="card-img-top" alt="">
-    }
-    <div class="card-body">
+<div>
+  <div class="card border-0">
+    <div class="card-body px-0">
+      @if(movie.image) {
+      <img [src]="'http://localhost:8080/movies/' + movie.id + '/image'" class="card-img-top card-img">
+      }
       <h5 class="card-title">{{movie.title}}</h5>
-      <p class="card-text">{{movie.synopsis}}</p>
-      <label class="note">Note: {{movie.rate}}</label>
+      <div class="card-info">
+        <div class="star"> </div>
+        <b>{{movie.rate}}/<small>5</small></b> | {{ movie.releaseDate | date: 'yyyy' }}
+      </div>
     </div>
   </div>
-  
+</div>

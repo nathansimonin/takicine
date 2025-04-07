@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Movie } from '../../models/movie';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-movie',
   standalone: true,
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './movie.component.html',
   styleUrl: './movie.component.scss'
 })

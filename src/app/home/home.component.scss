@@ -1,6 +1,15 @@
-:host {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
+section {
+  padding: 5vh 10vw;
+}
+
+.movie-wrapper {
+  flex: 0 0 25%;
+}
+
+.carousel-row {
+  display: flex;
+  flex-wrap: wrap;
+  transition: transform .5s ease-in-out;
+  margin: 0 -5px;
+  width: 100%;
+}
