@@ -1,0 +1,17 @@
+<div class="card global-card">
+    <div class="profileDetails">
+        <div class="profileIcon">
+            <i class="bi-person"></i>
+        </div>
+        {{review.user.firstName}}
+        {{review.user.lastName}}
+    </div>
+    <div class="reviewDetails">
+        <div style="display: flex; gap: 0.2rem">
+            <i class="bi-star-fill"></i>
+            {{review.rate}}/5
+        </div>
+         Publié le {{review.reviewDate | date: 'yyyy-MM-dd' }}
+    </div>
+    {{review.text}}
+</div>
