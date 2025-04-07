@@ -49,4 +49,8 @@ export class MoviesDetailsComponent {
     const date = typeof input === 'string' ? new Date(input) : input;
     return isNaN(date.getTime()) ? null : date.getFullYear();
   }
+
+  openModal() {
+    console.log('open modal');
+  }
 }
