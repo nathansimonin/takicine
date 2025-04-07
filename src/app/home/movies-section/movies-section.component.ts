@@ -12,6 +12,30 @@ import { CarouselModule } from 'primeng/carousel'
   styleUrl: './movies-section.component.scss'
 })
 export class MoviesSectionComponent {
-  @Input({required: true}) title!: string;
-  @Input({required: true}) movies!: Movie[];
+  @Input({ required: true }) title!: string;
+  @Input({ required: true }) movies!: Movie[];
+
+  public filteredMovies: Movie[] = [];
+
+  filterByLetters() {
+    this.filteredMovies = this.movies.slice().sort((a, b) => a.title.localeCompare(b.title));
+  }
+
+  filterByReleaseDate() {
+    this.filteredMovies = this.movies.slice().sort((a, b) =>
+      new Date(a.releaseDate).getTime() - new Date(b.releaseDate).getTime()
+    );
+  }
+
+  filterByRateAscending() {
+    this.filteredMovies = this.movies.slice().sort((a, b) => (a.rate ?? 0) - (b.rate ?? 0));
+  }
+
+  filterByRateDescending() {
+    this.filteredMovies = this.movies.slice().sort((a, b) => (b.rate ?? 0) - (a.rate ?? 0));
+  }
+
+  resetFilter() {
+    this.filteredMovies = [];
+  }
 }
