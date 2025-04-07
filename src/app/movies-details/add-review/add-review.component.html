@@ -1,0 +1,10 @@
+<div [formGroup]="form" class="form">
+  <app-rating (ratingChange)="onRatingChange($event)"></app-rating>
+  <div class="input-group">
+    <span class="input-group-text">Rédiger votre avis</span>
+    <textarea 
+    [ngClass]="{'is-invalid': form.controls['text'].invalid && form.controls['text'].touched}"
+    class="form-control" aria-label="With textarea" formControlName="text"></textarea>
+  </div>
+  <button type="button" class="btn btn-warning">Envoyer l'avis</button>
+</div>

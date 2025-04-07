@@ -32,7 +32,7 @@
         <div class="reviews" style="display: flex; flex-direction: column; margin-right: 20px;">
             <div class="reviews" style="display: flex; justify-content: space-between; align-items: center;">
                 <h1 class="mb-0 fw-bold" style="border-left: 10px solid #FBC02D; padding-left: 15px;">Avis</h1>
-                <button class="btn btn-warning mt-2" (click)="openModal()">REDIGER MA CRITIQUE</button>
+                <button class="btn btn-warning mt-2" [routerLink]="'review'">REDIGER MA CRITIQUE</button>
             </div>
                 @for (review of reviews$ | async; let i = $index; track review.id) {
                     <app-movies-comment [review]="review" [isGray]="i % 2 === 0"></app-movies-comment>

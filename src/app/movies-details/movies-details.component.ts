@@ -1,24 +1,26 @@
 import { Component,  } from '@angular/core';
 import { Movie } from '../models/movie';
 import { MoviesService } from '../services/movies.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Review } from '../models/review';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { MoviesCommentComponent } from '../movies-comment/movies-comment.component';
 
 @Component({
   selector: 'app-movies-details',
   standalone: true,
-  imports: [AsyncPipe, MoviesCommentComponent],
+  imports: [AsyncPipe, MoviesCommentComponent, RouterLink],
   templateUrl: './movies-details.component.html',
   styleUrl: './movies-details.component.scss'
 })
 export class MoviesDetailsComponent {
+  showModal: boolean = false;
+
 
   constructor(
     private readonly moviesService: MoviesService,
-    private activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   movieId!: number;
@@ -51,6 +53,6 @@ export class MoviesDetailsComponent {
   }
 
   openModal() {
-    console.log('open modal');
+    this.showModal = true;
   }
 }

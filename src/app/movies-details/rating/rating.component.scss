@@ -1,0 +1,21 @@
+.star-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .bi {
+    font-size: 2rem;
+    cursor: pointer;
+    color: #ffc107;
+  }
+  
+  .bi-star {
+    color: #ccc;
+  }
+  
+  .rating-value {
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  
