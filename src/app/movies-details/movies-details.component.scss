@@ -20,3 +20,22 @@
       transform: scale(1.05);
     }
 }
+
+.reviews-layout {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.reviews {
+  flex: 70%;
+}
+
+.suggestions {
+  flex: 30%;
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: 900px;
+}
