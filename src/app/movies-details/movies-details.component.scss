@@ -1,0 +1,41 @@
+.poster-hover {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+.poster {
+    width: 75%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  
+    &:hover {
+      transform: scale(1.05);
+    }
+}
+
+.reviews-layout {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.reviews {
+  flex: 70%;
+}
+
+.suggestions {
+  flex: 30%;
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: 900px;
+}

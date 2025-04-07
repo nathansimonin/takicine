@@ -1,0 +1,21 @@
+<section id="current_movies">
+    <div class="section_header">
+        <h1>{{ title }}</h1>
+    </div>
+    <!-- div class="row carousel-row">
+        @for (movie of movies; track movie.id) {
+        <div class="movie-wrapper">
+            <app-movie [movie]="movie"></app-movie>
+        </div>
+        }
+    </div -->
+    <div class="row carousel-row">
+        <ng-container *ngIf="movies">
+            <p-carousel [value]="movies" [numVisible]="5" [numScroll]="2" [circular]="true" styleClass="my-carousel">
+                <ng-template pTemplate="item" let-movie>
+                    <app-movie [movie]="movie"></app-movie>
+                </ng-template>
+            </p-carousel>
+        </ng-container>
+    </div>
+</section>
