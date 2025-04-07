@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Movie } from '../models/movie';
+import { Review } from '../models/review';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,7 @@ export class MoviesService {
     return this.httpClient.put<Movie>(`${this.url}/${movieId}`, movie);
   }
 
-  getReviews(movieId: number): Observable<Movie[]> {
-    return this.httpClient.get<Movie[]>(`${this.url}/${movieId}/reviews`);
+  getReviews(movieId: number): Observable<Review[]> {
+    return this.httpClient.get<Review[]>(`${this.url}/${movieId}/reviews`);
   }
 }

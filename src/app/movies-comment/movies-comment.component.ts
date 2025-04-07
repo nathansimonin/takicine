@@ -13,4 +13,6 @@ import {Review} from "../models/review";
 })
 export class MoviesCommentComponent {
   @Input({required: true}) review!: Review;
+
+  @Input({required: true}) isGray!: boolean
 }

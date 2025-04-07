@@ -28,9 +28,9 @@
             <p class="fs-4">{{ movie.synopsis }}</p>
         </div>
     </div>
-    <div class="comment">
-        @for (comment of comments$ | async; track comment.id) {
-            <movies-comment [comment]="comment"></movies-comment>
+    <div class="reviews">
+        @for (review of reviews$ | async; let i = $index; track review.id) {
+            <app-movies-comment [review]="review" [isGray]="i % 2 === 0"></app-movies-comment>
         }
     </div>
 </div>

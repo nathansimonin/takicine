@@ -3,11 +3,14 @@ import { Movie } from '../models/movie';
 import { MoviesService } from '../services/movies.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Review } from '../models/review';
+import { AsyncPipe } from '@angular/common';
+import { MoviesCommentComponent } from '../movies-comment/movies-comment.component';
 
 @Component({
   selector: 'app-movies-details',
   standalone: true,
-  imports: [],
+  imports: [AsyncPipe, MoviesCommentComponent],
   templateUrl: './movies-details.component.html',
   styleUrl: './movies-details.component.scss'
 })
@@ -29,7 +32,7 @@ export class MoviesDetailsComponent {
     image: undefined
   };
 
-  comments$: Observable<Movie[]> = this.moviesService.getReviews();
+  reviews$!: Observable<Review[]>;
 
   ngOnInit(): void {
     this.movieId = +(this.activatedRoute.snapshot.paramMap.get('id')!);
@@ -39,7 +42,7 @@ export class MoviesDetailsComponent {
         movie.releaseDate = movie.releaseDate.toISOString().split('T')[0]
         this.movie = movie;
       });
-    
+    this.reviews$ = this.moviesService.getReviews(this.movieId);
   }
 
   extractYear(input: Date | string): number | null {
